@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/schoolexam
+    username: root
+    password:
+  jpa:
+    hibernate.ddl-auto: none
+    generate-ddl: true
+    show-sql: true
