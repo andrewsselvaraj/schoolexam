@@ -21,7 +21,7 @@ public class HelloWorldController {
 	@RequestMapping({ "/hello" })
 	public String hello() {
 		logger.log("hello");
-		return "Hello World";
+		return "Hello World Hello world..!!!!";
 	}
 
 }
