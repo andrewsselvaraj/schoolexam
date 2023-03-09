@@ -1,6 +1,6 @@
-package com.schoolexam.model;
+package com.schoolexam.vo;
 
-public class SchoolExam {
+public class SchoolExamVO {
 	String pk_school_id;
 	String user_name;
 	String password;
@@ -120,7 +120,7 @@ public class SchoolExam {
 	public void setSchool_status(String school_status) {
 		this.school_status = school_status;
 	}
-	public SchoolExam(String pk_school_id, String user_name, String password, String school_name, String principal_name,
+	public SchoolExamVO(String pk_school_id, String user_name, String password, String school_name, String principal_name,
 			String school_address, String city, String state, String country, String pincode, String email,
 			String website, String contact_no, String created_by, String last_updated_by, String last_updated_date_time, String school_status) {
 		super();
@@ -142,13 +142,13 @@ public class SchoolExam {
 		this.last_updated_date_time = last_updated_date_time;
 		this.school_status = school_status;
 	}
-	public SchoolExam() {
+	public SchoolExamVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public String toString() {
-		return "SchoolExam [pk_school_id=" + pk_school_id + ", user_name=" + user_name + ", password=" + password
+		return "SchoolExamVO [pk_school_id=" + pk_school_id + ", user_name=" + user_name + ", password=" + password
 				+ ", school_name=" + school_name + ", principal_name=" + principal_name + ", school_address="
 				+ school_address + ", city=" + city + ", state=" + state + ", country=" + country + ", pincode="
 				+ pincode + ", email=" + email + ", website=" + website + ", contact_no=" + contact_no + ", created_by="

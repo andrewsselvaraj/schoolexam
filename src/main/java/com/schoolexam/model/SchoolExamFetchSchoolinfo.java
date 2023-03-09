@@ -11,9 +11,9 @@ import jakarta.persistence.Table;
 @Table(name="school_info")
 public class SchoolExamFetchSchoolinfo {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+
 	
+	@Id
 	@Column(name = "pk_school_id")
 	String pk_school_id;
 	

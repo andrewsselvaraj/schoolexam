@@ -11,8 +11,8 @@ public class DBUtil {
 		if(connection != null) {
 			return connection;
 		} else {
-			String driver = "com.mysql.cj.jdbc.Driver";
-			String url = "jdbc:mysql://localhost:3306/online_test_efreelearn_vtwo?useSSL=false";
+			String driver = "com.mysql.cj.jdbc.Driver";//jdbc:mysql://localhost:3306/schoolexam
+			String url = "jdbc:mysql://localhost:3306/schoolexam?useSSL=false";
 			String user = "root";
 			String password = "";
 			

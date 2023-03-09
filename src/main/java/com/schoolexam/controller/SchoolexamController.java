@@ -8,28 +8,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.schoolexam.model.SchoolExam;
+import com.schoolexam.vo.SchoolExamVO;
 import com.schoolexam.model.SchoolExamFetchSchoolinfo;
-import com.schoolexam.service.SchoolexamService;
-import com.schoolexam.service.SchoolinfoFetchService;
+import com.schoolexam.repository.SchoolexamRepository;
+import com.schoolexam.repository.SchoolinfoFetchRepository;
 
 @RestController
 public class SchoolexamController {
 
 	@Autowired
-	private SchoolexamService schlservice;
-	
-	@PostMapping(value = "/addschool")
-	public void addSchool(@RequestBody SchoolExam sch) {
-		schlservice.addSchool(sch);
-	}
-	
+	SchoolinfoFetchRepository schoolinfoFetchRepository;
 	@Autowired
-	SchoolinfoFetchService schoolinfofetchservice;
+	com.schoolexam.service.SchoolService SchoolService;
+	@PostMapping(value = "/addschool")
+	public void addSchool(@RequestBody SchoolExamVO sch) {
+		SchoolService.addSchool(sch);
+		
+	}
+
 	
 	@GetMapping(path = "findall_school_info")
 	List<SchoolExamFetchSchoolinfo> getSchoolinfo() {
-		return schoolinfofetchservice.findAll();
+		return schoolinfoFetchRepository.findAll();
 	}
 	
 }
