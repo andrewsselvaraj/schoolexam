@@ -1,0 +1,48 @@
+{
+	"info": {
+		"_postman_id": "df100b91-0820-4836-bd95-ad0d68f12b06",
+		"name": "SchoolExam",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5247603"
+	},
+	"item": [
+		{
+			"name": "insertschool",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqYXZhaW51c2UiLCJleHAiOjE2Nzc4NjMzMTUsImlhdCI6MTY3Nzg0NTMxNX0.fbhq6e1LFUt-CQbJMgzMsdymYjKtaSzxSqO1W8F_bVlpyg0wrkKZUyk5hm-7ADpG0ls9I4WE3KyjjeFAo-UQbw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pk_school_id\":\"222\",\r\n    \"user_name\" : \"ebgschool\",\r\n    \"password\" : \"ebgschool\",\r\n    \"school_name\" : \"EBGSchool\",\r\n    \"principal_name\" : \"EBGPrincipal\",\r\n    \"school_address\" : \"Chennai\",\r\n    \"city\" : \"Chennai\",\r\n    \"state\" : \"TamilNadu\",\r\n    \"country\" : \"India\",\r\n    \"pincode\" : \"600028\",\r\n    \"email\" : \"ebg@ebgschool.com\",\r\n    \"website\" : \"www.ebgschool.com\",\r\n    \"contact_no\" : \"1231231231\",\r\n    \"created_by\" : \"Christofer\",\r\n    \"last_updated_by\" : \"Christ\",\r\n    \"last_updated_date_time\" : \"2023-03-09\",\r\n    \"school_status\" : \"active\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8888/addschool",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"addschool"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
