@@ -1,9 +1,11 @@
 package com.schoolexam.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,27 +36,9 @@ public class SchoolexamController {
 	}
 	//Add school --end--
 
-	//Add Class --start--
-	@Autowired
-	ClassInfoRepository classinforepository;
-	@Autowired
-	com.schoolexam.service.ClassInfoService ClassInfoService;
-	@PostMapping(value = "/addclass")
-	public void insertClass(@RequestBody ClassInfoVO ci) {
-		ClassInfoService.insertClass(ci);
-	}
-	//Add Class --end--
 	
-	//Add Subject --start--
-	@Autowired
-	SubjectInfoRepository subjectinforepository;
-	@Autowired
-	com.schoolexam.service.SubjectInfoService SubjectInfoService;
-	@PostMapping(value = "/addsubject")
-	public void insertSubject(@RequestBody SubjectInfoVO si) {
-		SubjectInfoService.insertSubject(si);
-	}
-	//Add Subject --end--
+	
+	
 	
 	//Add Question --start--
 	@Autowired
@@ -79,10 +63,17 @@ public class SchoolexamController {
 	//Add Answer --end--
 	
 	//Fetch school info --start--
-	@GetMapping(path = "findall_school_info")
+	@GetMapping(path = "/findallschoolinfo/{id}")
+	Optional<SchoolExamFetchSchoolinfo> getSchoolinfo(@PathVariable String id) {
+		//return schoolinfoFetchRepository.findAll();
+		return schoolinfoFetchRepository.findById(id);
+	}
+	//Fetch school info --end--
+	
+	@GetMapping(path = "/fetchschoolinfo")
 	List<SchoolExamFetchSchoolinfo> getSchoolinfo() {
 		return schoolinfoFetchRepository.findAll();
 	}
-	//Fetch school info --end--
+
 	
 }
