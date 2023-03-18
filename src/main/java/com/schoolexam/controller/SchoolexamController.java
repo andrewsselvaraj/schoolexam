@@ -15,6 +15,7 @@ import com.schoolexam.vo.ClassInfoVO;
 import com.schoolexam.vo.QuestionInfoVO;
 import com.schoolexam.vo.SchoolExamVO;
 import com.schoolexam.vo.SubjectInfoVO;
+import com.schoolexam.model.ClassInfoModel;
 import com.schoolexam.model.SchoolExamFetchSchoolinfo;
 import com.schoolexam.repository.AnswerInfoRepository;
 import com.schoolexam.repository.ClassInfoRepository;
@@ -62,18 +63,23 @@ public class SchoolexamController {
 	}
 	//Add Answer --end--
 	
-	//Fetch school info --start--
+	//Fetch school info by id --start--
 	@GetMapping(path = "/findallschoolinfo/{id}")
-	Optional<SchoolExamFetchSchoolinfo> getSchoolinfo(@PathVariable String id) {
+	Optional<SchoolExamFetchSchoolinfo> getSchoolinfobyID(@PathVariable String id) {
 		//return schoolinfoFetchRepository.findAll();
 		return schoolinfoFetchRepository.findById(id);
 	}
 	//Fetch school info --end--
 	
+	
+	//Fetch school info by id --start--
 	@GetMapping(path = "/fetchschoolinfo")
 	List<SchoolExamFetchSchoolinfo> getSchoolinfo() {
 		return schoolinfoFetchRepository.findAll();
 	}
+	//Fetch school info --end--
 
+	
+	
 	
 }

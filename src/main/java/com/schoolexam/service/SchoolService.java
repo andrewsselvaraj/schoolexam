@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.schoolexam.vo.SchoolExamVO;
 import com.schoolexam.model.SchoolExamFetchSchoolinfo;
 import com.schoolexam.repository.SchoolinfoFetchRepository;
+
+
 @Service
 public class SchoolService {
 
