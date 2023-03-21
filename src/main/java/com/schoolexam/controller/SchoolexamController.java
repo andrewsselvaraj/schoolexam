@@ -15,8 +15,11 @@ import com.schoolexam.vo.ClassInfoVO;
 import com.schoolexam.vo.QuestionInfoVO;
 import com.schoolexam.vo.SchoolExamVO;
 import com.schoolexam.vo.SubjectInfoVO;
+import com.schoolexam.model.AnswerInfoModel;
 import com.schoolexam.model.ClassInfoModel;
+import com.schoolexam.model.QuestionInfoModel;
 import com.schoolexam.model.SchoolExamFetchSchoolinfo;
+import com.schoolexam.model.SubjectInfoModel;
 import com.schoolexam.repository.AnswerInfoRepository;
 import com.schoolexam.repository.ClassInfoRepository;
 import com.schoolexam.repository.QuestionInfoRepository;
@@ -26,7 +29,7 @@ import com.schoolexam.repository.SubjectInfoRepository;
 @RestController
 public class SchoolexamController {
 
-	//Add School --start--
+	//School info --start--
 	@Autowired
 	SchoolinfoFetchRepository schoolinfoFetchRepository;
 	@Autowired
@@ -35,51 +38,122 @@ public class SchoolexamController {
 	public void addSchool(@RequestBody SchoolExamVO sch) {
 		SchoolService.addSchool(sch);
 	}
-	//Add school --end--
-
 	
-	
-	
-	
-	//Add Question --start--
-	@Autowired
-	QuestionInfoRepository questioninforepository;
-	@Autowired
-	com.schoolexam.service.QuestionInfoService QuestionInfoService;
-	@PostMapping(value = "/addquestion")
-	public void insertQuestion(@RequestBody QuestionInfoVO qi) {
-		QuestionInfoService.insertQuestion(qi);
+	@GetMapping(path = "/fetchschoolinfo")
+	List<SchoolExamFetchSchoolinfo> getSchoolinfo() {
+		return schoolinfoFetchRepository.findAll();
 	}
-	//Add Question --end--
 	
-	//Add Answer --start--
-	@Autowired
-	AnswerInfoRepository answerinforepository;
-	@Autowired
-	com.schoolexam.service.AnswerInfoService AnswerInfoService;
-	@PostMapping(value = "/addanswer")
-	public void insertAnswer(@RequestBody AnswerInfoVO ai) {
-		AnswerInfoService.insertAnswer(ai);
-	}
-	//Add Answer --end--
-	
-	//Fetch school info by id --start--
 	@GetMapping(path = "/findallschoolinfo/{id}")
 	Optional<SchoolExamFetchSchoolinfo> getSchoolinfobyID(@PathVariable String id) {
 		//return schoolinfoFetchRepository.findAll();
 		return schoolinfoFetchRepository.findById(id);
 	}
-	//Fetch school info --end--
-	
-	
-	//Fetch school info by id --start--
-	@GetMapping(path = "/fetchschoolinfo")
-	List<SchoolExamFetchSchoolinfo> getSchoolinfo() {
-		return schoolinfoFetchRepository.findAll();
-	}
-	//Fetch school info --end--
+	//school info --end--
 
 	
+	//Class Info --start--
 	
+			@Autowired
+			com.schoolexam.service.ClassInfoService ClassInfoService;
+			
+			@Autowired
+			ClassInfoRepository classinforepository;
+			
+			@PostMapping(value = "/addclass")
+			public void insertClass(@RequestBody ClassInfoVO ci) {
+				ClassInfoService.insertClass(ci);
+			}
+			
+			@GetMapping(path = "/getclassinfo")
+			List<ClassInfoModel> fetchClassinfo() {
+				return classinforepository.findAll();
+			}
+			
+			@GetMapping(path = "/getclassinfobyid/{id}")
+			Optional<ClassInfoModel> getclassinfoById(@PathVariable String id) {
+				return classinforepository.findById(id);
+			}
+			
+			//Class Info --end--
+	
+			
+			//Subject info --start--
+			
+			@Autowired
+			SubjectInfoRepository subjectinforepository;
+			@Autowired
+			com.schoolexam.service.SubjectInfoService SubjectInfoService;
+			@PostMapping(value = "/addsubject")
+			public void insertSubject(@RequestBody SubjectInfoVO si) {
+				SubjectInfoService.insertSubject(si);
+			}
+			
+			@GetMapping(path = "/getsubjectinfo")
+			List<SubjectInfoModel> fetchSubjectinfo() {
+				return subjectinforepository.findAll();
+			}
+			
+			@GetMapping(path = "/getsubjectinfobyid/{id}")
+			Optional<SubjectInfoModel> getsubjectinfoById(@PathVariable String id) {
+				return subjectinforepository.findById(id);
+			}
+			
+			
+			//Subject info --end--
+			
+			
+			//Question info --start--
+			@Autowired
+			QuestionInfoRepository questioninforepository;
+			@Autowired
+			com.schoolexam.service.QuestionInfoService QuestionInfoService;
+			@PostMapping(value = "/addquestion")
+			public void insertQuestion(@RequestBody QuestionInfoVO qi) {
+				QuestionInfoService.insertQuestion(qi);
+			}
+			
+			@GetMapping(path = "/getqinfo")
+			List<QuestionInfoModel> getquesinfo() {
+				return questioninforepository.findAll();
+			}
+			
+			@GetMapping(path = "/getquestioninfo")
+			List<QuestionInfoModel> fetchQuestionInfo() {
+				return questioninforepository.findAll();
+			}
+			
+			@GetMapping(path = "/getquestioninfobyid/{id}")
+			Optional<QuestionInfoModel> getquestioninfoById(@PathVariable String id) {
+				return questioninforepository.findById(id);
+			}
+			
+			
+			//Question info --end--
+			
+			
+			//Answer info --start--
+			
+			@Autowired
+			AnswerInfoRepository answerinforepository;
+			@Autowired
+			com.schoolexam.service.AnswerInfoService AnswerInfoService;
+			@PostMapping(value = "/addanswer")
+			public void insertAnswer(@RequestBody AnswerInfoVO ai) {
+				AnswerInfoService.insertAnswer(ai);
+			}
+			
+			@GetMapping(path = "/getanswerinfo") 
+			List<AnswerInfoModel> fetchAnswerInfo() {
+				return answerinforepository.findAll();
+			}
+			
+			@GetMapping(path = "/getanswerinfobyid/{id}")
+			Optional<AnswerInfoModel> getanswerinfoById(@PathVariable String id) {
+				return answerinforepository.findById(id);
+			}
+			//Answer info --end--
+			
+
 	
 }

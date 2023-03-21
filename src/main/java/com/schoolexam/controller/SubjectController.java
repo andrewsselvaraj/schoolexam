@@ -9,14 +9,5 @@ import com.schoolexam.vo.SubjectInfoVO;
 
 public class SubjectController {
 
-	//Add Subject --start--
-		@Autowired
-		SubjectInfoRepository subjectinforepository;
-		@Autowired
-		com.schoolexam.service.SubjectInfoService SubjectInfoService;
-		@PostMapping(value = "/addsubject")
-		public void insertSubject(@RequestBody SubjectInfoVO si) {
-			SubjectInfoService.insertSubject(si);
-		}
-		//Add Subject --end--
+	
 }
