@@ -15,8 +15,11 @@ import com.schoolexam.vo.ClassInfoVO;
 import com.schoolexam.vo.QuestionInfoVO;
 import com.schoolexam.vo.SchoolExamVO;
 import com.schoolexam.vo.SubjectInfoVO;
+import com.schoolexam.model.AnswerInfoModel;
 import com.schoolexam.model.ClassInfoModel;
+import com.schoolexam.model.QuestionInfoModel;
 import com.schoolexam.model.SchoolExamFetchSchoolinfo;
+import com.schoolexam.model.SubjectInfoModel;
 import com.schoolexam.repository.AnswerInfoRepository;
 import com.schoolexam.repository.ClassInfoRepository;
 import com.schoolexam.repository.QuestionInfoRepository;
@@ -26,7 +29,7 @@ import com.schoolexam.repository.SubjectInfoRepository;
 @RestController
 public class SchoolexamController {
 
-	//Add School --start--
+	//School info --start--
 	@Autowired
 	SchoolinfoFetchRepository schoolinfoFetchRepository;
 	@Autowired
@@ -35,51 +38,19 @@ public class SchoolexamController {
 	public void addSchool(@RequestBody SchoolExamVO sch) {
 		SchoolService.addSchool(sch);
 	}
-	//Add school --end--
-
 	
-	
-	
-	
-	//Add Question --start--
-	@Autowired
-	QuestionInfoRepository questioninforepository;
-	@Autowired
-	com.schoolexam.service.QuestionInfoService QuestionInfoService;
-	@PostMapping(value = "/addquestion")
-	public void insertQuestion(@RequestBody QuestionInfoVO qi) {
-		QuestionInfoService.insertQuestion(qi);
+	@GetMapping(path = "/fetchschoolinfo")
+	List<SchoolExamFetchSchoolinfo> getSchoolinfo() {
+		return schoolinfoFetchRepository.findAll();
 	}
-	//Add Question --end--
 	
-	//Add Answer --start--
-	@Autowired
-	AnswerInfoRepository answerinforepository;
-	@Autowired
-	com.schoolexam.service.AnswerInfoService AnswerInfoService;
-	@PostMapping(value = "/addanswer")
-	public void insertAnswer(@RequestBody AnswerInfoVO ai) {
-		AnswerInfoService.insertAnswer(ai);
-	}
-	//Add Answer --end--
-	
-	//Fetch school info by id --start--
 	@GetMapping(path = "/findallschoolinfo/{id}")
 	Optional<SchoolExamFetchSchoolinfo> getSchoolinfobyID(@PathVariable String id) {
 		//return schoolinfoFetchRepository.findAll();
 		return schoolinfoFetchRepository.findById(id);
 	}
-	//Fetch school info --end--
-	
-	
-	//Fetch school info by id --start--
-	@GetMapping(path = "/fetchschoolinfo")
-	List<SchoolExamFetchSchoolinfo> getSchoolinfo() {
-		return schoolinfoFetchRepository.findAll();
-	}
-	//Fetch school info --end--
+	//school info --end--
 
-	
 	
 	
 }
