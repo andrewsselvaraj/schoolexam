@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +28,7 @@ import com.schoolexam.repository.SchoolinfoFetchRepository;
 import com.schoolexam.repository.SubjectInfoRepository;
 
 @RestController
+@CrossOrigin()
 public class SchoolexamController {
 
 	//School info --start--

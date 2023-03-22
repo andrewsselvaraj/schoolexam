@@ -2,6 +2,7 @@ package com.schoolexam.controller;
 
 
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +11,7 @@ import com.schoolexam.vo.UserVO;
 
 
 @RestController
+@CrossOrigin()
 public class LoginController {
 
 	//Add School --start--
