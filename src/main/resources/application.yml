@@ -10,7 +10,7 @@ spring:
     password:
   jpa:
     hibernate.ddl-auto: none
-    generate-ddl: true
+    generate-ddl: false
     show-sql: true
 management:
     endpoints:
