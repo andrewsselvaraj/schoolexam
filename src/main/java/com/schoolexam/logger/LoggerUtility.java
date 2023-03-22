@@ -3,6 +3,7 @@ package com.schoolexam.logger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.slf4j.MDC;
 
 
 
@@ -12,6 +13,8 @@ public class LoggerUtility {
 	
 	public void log(String message)
 	{
+		MDC.put("username", "johndoe");
+		logger.info("User logged in");
 		logger.info(message);
 	}
 	
