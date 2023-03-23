@@ -5,9 +5,9 @@ spring:
     baseUrl: http://localhost:9411/ 
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/pupsyothakadai
-    username: admin
-    password: Admin@123#
+    url: jdbc:mysql://localhost:3306/schoolexam
+    username: root
+    password:
   jpa:
     hibernate.ddl-auto: none
     generate-ddl: false
