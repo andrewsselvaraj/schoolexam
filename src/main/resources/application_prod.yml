@@ -1,0 +1,29 @@
+server:
+  port: 5678 
+spring:
+  zipkin:
+    baseUrl: http://localhost:9411/ 
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/pupsyothakadai
+    username: admin
+    password: Admin@123#
+  jpa:
+    hibernate.ddl-auto: none
+    generate-ddl: false
+    show-sql: true
+management:
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+logging:
+  file.name: logs/application-debug.log
+  level:
+    org.springframework.web: ERROR
+    com.schoolexam: INFO
+    org.hibernate: ERROR
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+    file: "%d %p %c{1.} [%t] %m%n"
+               
