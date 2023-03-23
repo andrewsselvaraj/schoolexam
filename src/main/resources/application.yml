@@ -1,5 +1,3 @@
-#-Dspring.profiles.active=dev VM ARGUMENTS
 spring:
-  profiles:
-    active: dev
-    
+    profiles:
+        active: prod
