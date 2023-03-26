@@ -1,5 +1,6 @@
 package com.schoolexam.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +17,9 @@ import com.schoolexam.vo.ClassInfoVO;
 import com.schoolexam.vo.QuestionInfoVO;
 import com.schoolexam.vo.SchoolExamVO;
 import com.schoolexam.vo.SubjectInfoVO;
+
+import io.github.resilience4j.retry.annotation.Retry;
+
 import com.schoolexam.model.AnswerInfoModel;
 import com.schoolexam.model.ClassInfoModel;
 import com.schoolexam.model.QuestionInfoModel;
@@ -42,8 +46,13 @@ public class SchoolexamController {
 	}
 	
 	@GetMapping(path = "/fetchschoolinfo")
+	@Retry(name = "schoolinforetry", fallbackMethod = "schoolinfofallback")
 	List<SchoolExamFetchSchoolinfo> getSchoolinfo() {
 		return schoolinfoFetchRepository.findAll();
+	}
+	
+	List<SchoolExamFetchSchoolinfo> schoolinfofallback(Exception e) {
+		return new ArrayList<SchoolExamFetchSchoolinfo>();
 	}
 	
 	@GetMapping(path = "/findallschoolinfo/{id}")

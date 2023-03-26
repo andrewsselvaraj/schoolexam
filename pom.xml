@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.0.4</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.schoolexam</groupId>
 	<artifactId>schoolexam</artifactId>
@@ -15,7 +15,7 @@
 	<description>schoolexam project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
-		<spring-cloud.version>Dalston.SR3</spring-cloud.version>
+		<spring-cloud.version>2022.0.1</spring-cloud.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -45,18 +45,26 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 		<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-    <groupId>log4j</groupId>
-    <artifactId>log4j</artifactId>
-    <version>1.2.17</version>
-</dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		<dependency>
+		   <groupId>org.springframework</groupId>
+		   <artifactId>spring-aspects</artifactId>
+		</dependency>
+
 	</dependencies>
-	
-		<dependencyManagement>
+	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
@@ -67,7 +75,6 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -76,5 +83,4 @@
 			</plugin>
 		</plugins>
 	</build>
-   
 </project>
