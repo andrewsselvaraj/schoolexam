@@ -12,6 +12,19 @@ spring:
     hibernate.ddl-auto: none
     generate-ddl: false
     show-sql: true
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      routes:
+      - id: schoolModule
+        uri: http://localhost:5678/
+        predicates:
+        - Path=/school/**
+#      - id: consumerModule
+#        uri: http://localhost:8082/
+#        predicates:
+#        - Path=/consumer/**
 management:
     endpoints:
         web:
@@ -28,10 +41,10 @@ logging:
     file: "%d %p %c{1.} [%t] %m%n"
 resilience4j:
   retry:
-    retry-aspect-order: 2
+    retry-aspect-order: 4
     instances:
       myRetry:
-        max-attempts: 3
+        max-attempts: 6
         wait-duration: 5s
         enable-exponential-backoff: true
         exponential-backoff-multiplier: 2

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.schoolexam.model.SubjectInfoModel;
@@ -17,6 +18,7 @@ import com.schoolexam.vo.SubjectInfoVO;
 
 @RestController
 @CrossOrigin()
+@RequestMapping(path = "/subject")
 public class SubjectController {
 
 	@Autowired

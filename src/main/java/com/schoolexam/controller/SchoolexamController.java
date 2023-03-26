@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.schoolexam.vo.AnswerInfoVO;
@@ -34,6 +35,7 @@ import com.schoolexam.repository.SubjectInfoRepository;
 
 @RestController
 @CrossOrigin()
+@RequestMapping(path = "/school")
 public class SchoolexamController {
 
 	//School info --start--
@@ -47,7 +49,7 @@ public class SchoolexamController {
 	}
 	
 	@GetMapping(path = "/fetchschoolinfo")
-	@CircuitBreaker(name = "schoolCircuitBreaker", fallbackMethod = "schoolinfofallback")
+	@CircuitBreaker(name = "schoolinforetry", fallbackMethod = "schoolinfofallback")
 	@Retry(name = "schoolinforetry")
 	List<SchoolExamFetchSchoolinfo> getSchoolinfo() {
 		return schoolinfoFetchRepository.findAll();
