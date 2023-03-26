@@ -18,6 +18,7 @@ import com.schoolexam.vo.QuestionInfoVO;
 import com.schoolexam.vo.SchoolExamVO;
 import com.schoolexam.vo.SubjectInfoVO;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 
 import com.schoolexam.model.AnswerInfoModel;
@@ -46,7 +47,8 @@ public class SchoolexamController {
 	}
 	
 	@GetMapping(path = "/fetchschoolinfo")
-	@Retry(name = "schoolinforetry", fallbackMethod = "schoolinfofallback")
+	@CircuitBreaker(name = "schoolCircuitBreaker", fallbackMethod = "schoolinfofallback")
+	@Retry(name = "schoolinforetry")
 	List<SchoolExamFetchSchoolinfo> getSchoolinfo() {
 		return schoolinfoFetchRepository.findAll();
 	}
