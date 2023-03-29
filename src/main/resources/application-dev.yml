@@ -1,6 +1,8 @@
 server:
   port: 5678 
 spring:
+  application:
+    name: application_name_dev
   zipkin:
     baseUrl: http://localhost:9411/ 
   datasource:
