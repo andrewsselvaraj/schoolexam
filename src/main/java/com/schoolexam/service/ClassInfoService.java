@@ -16,6 +16,8 @@ public class ClassInfoService {
 	@Autowired
 	ClassInfoRepository classinforepository;
 	
+	
+	
 	public void insertClass(ClassInfoVO ci) {
 		ClassInfoModel classinfomodel = new ClassInfoModel();
 		Random ran2 = new Random();
@@ -32,8 +34,8 @@ public class ClassInfoService {
 		classinfomodel.setClass_active(ci.getClass_active());
 		
 		classinforepository.saveAndFlush(classinfomodel);
-		
-	
+		classinforepository.getClassInfoModelByName("String n");
 		
 	}
+	
 }

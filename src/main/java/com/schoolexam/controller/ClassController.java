@@ -42,4 +42,8 @@ public class ClassController {
 		return classinforepository.findById(id);
 	}
 	
+	@GetMapping(path = "/getclassinfobyname")
+	List<ClassInfoModel> classinfobyName(@PathVariable String n) {
+		return classinforepository.getClassInfoModelByName("Music");
+	}
 }
